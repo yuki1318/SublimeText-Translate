@@ -19,12 +19,12 @@ import warnings
 import requests
 
 try:
-    from .sentence_splitter import SentenceSplitter, split_text_into_sentences
+    from .sentence_splitter import SentenceSplitter #, split_text_into_sentences
     import regex
     #print("sentence_splitter loaded!")
-except Exception as e:
+except:
     try:
-        from sentence_splitter import SentenceSplitter, split_text_into_sentences
+        from sentence_splitter import SentenceSplitter #, split_text_into_sentences
         import regex
         #print("sentence_splitter loaded!")
     except Exception as e:
@@ -33,7 +33,7 @@ except Exception as e:
 from os.path import dirname, realpath
 PLUGINPATH = dirname(realpath(__file__))
 
-__version__ = "3.3.1"
+__version__ = "3.3.2"
 # 3.0.0 + Bing translate engine
 # 3.0.1 + show_popup option to see translation without changing the text
 # 3.0.2 + better error handling (unsuccessful requests)
@@ -44,12 +44,13 @@ __version__ = "3.3.1"
 # 3.3.0 + text statistics and readability checks
 #       + improved behavior while inserting translation from clipboard without selection
 # 3.3.1 + cn.bing.com
+# 3.3.2 + updated list of languages in google_languages.json, according to https://cloud.google.com/translate/docs/languages
 
 REGIONS_ON = False
 DEBUG_TEST = False
 try:
     import sublime
-except Exception as e:
+except:
     # Used for quick translation test outside SublineText before updating the plugin 
     DEBUG_TEST = True
     import traceback
