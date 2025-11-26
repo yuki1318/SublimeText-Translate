@@ -14,7 +14,7 @@ This version includes Google & Bing translate, text readability analysis and sta
 🎯 Features:
 ------------
 
-* 133+ languages supported 
+* 194+ languages supported 
 * SublimeText 3 & 4 supported
 * Autodetect source language
 * Ability to specify source & target languages in settings
