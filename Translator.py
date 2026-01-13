@@ -1277,13 +1277,14 @@ class translatorCommand(sublime_plugin.TextCommand):
         #print('st: '+source_text)
         settings = sublime.load_settings("Translator.sublime-settings")
         engine = settings.get('engine')
+        source_language = self.view.settings().get("source_language")
         target_language = self.view.settings().get("target_language")
         if not source_language:
             source_language = settings.get("source_language")
         if not target_language:
             target_language = settings.get("target_language")
 
-        # print('engine: {0}, source_language {1}, target_language {2}'.format(engine, source_language, target_language))
+        print('engine: {0}, source_language {1}, target_language {2}'.format(engine, source_language, target_language))
         translate = Translate(engine=engine, source_lang=source_language, target_lang=target_language)
 
         v = self.view
@@ -1407,10 +1408,14 @@ class translatorFromBufferCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         settings = sublime.load_settings("Translator.sublime-settings")
         engine = settings.get("engine")
-        source_language = settings.get("source_language")
+        source_language = self.view.settings().get("source_language")
         target_language = self.view.settings().get("target_language")
+        if not source_language:
+            source_language = settings.get("source_language")
         if not target_language:
             target_language = settings.get("target_language")
+
+        print('engine: {0}, source_language {1}, target_language {2}'.format(engine, source_language, target_language))
         translate = Translate(engine, source_language, target_language)
 
         # def on_done(buffer):
